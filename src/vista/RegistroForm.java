@@ -44,14 +44,14 @@ public class RegistroForm extends javax.swing.JFrame {
 
         lblLavanderia.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         lblLavanderia.setForeground(new java.awt.Color(255, 255, 255));
-        lblLavanderia.setText("Lavanderia virtual");
+        lblLavanderia.setText("FORO SOPORTE TECNICO");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(545, Short.MAX_VALUE)
+                .addContainerGap(517, Short.MAX_VALUE)
                 .addComponent(lblLavanderia)
                 .addContainerGap())
         );
