@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package util;
 
-/**
- *
- * @author Carlos.Rezabala
- */
+import modelo.dto.UsuarioDTO;
+
 public class SesionUsuario {
-    
+
+    public static UsuarioDTO usuarioActual = null;
+
 }
