@@ -177,60 +177,74 @@ public class RegistroForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioSesionActionPerformed
-
+        // Abre la ventana de inicio de sesión
         LoginForm login = new LoginForm();
         login.setVisible(true);
         login.setLocationRelativeTo(null);
+        // Cierra la ventana actual de registro.
         this.dispose();
     }//GEN-LAST:event_btnInicioSesionActionPerformed
 
     private void SignUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpBtnActionPerformed
+        // Se crea el controlador encargado de procesar el registro del usuario.
         UsuarioController controller = new UsuarioController();
-
+        // Se envían al controlador los datos ingresados en el formulario.
         String resultado = controller.registrarUsuario(
             txtNombreCliente.getText(),
             txtCorreo.getText(),
             new String(pass.getPassword()),
             txtConfContra.getText()
         );
-
+        // Si el registro fue correcto, se muestra un mensaje y se vuelve al login.
         if (resultado.equals("OK")) {
             JOptionPane.showMessageDialog(this, "Usuario registrado correctamente.");
 
             LoginForm login = new LoginForm();
             login.setVisible(true);
             login.setLocationRelativeTo(null);
+            // Cierra la ventana de registro.
             this.dispose();
 
         } else {
+            // Muestra el error devuelto por el controlador.
             JOptionPane.showMessageDialog(this, resultado, "Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_SignUpBtnActionPerformed
 
     private void txtNombreClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreClienteKeyTyped
+        // Permite escribir solo letras y espacios en el campo de nombre.
         Character car = evt.getKeyChar();
         boolean valido = true;
         if (!Character.isLetter(car) && car != ' ') {
             valido = false;
         }
+        // Limita la cantidad de caracteres del nombre.
         if (txtNombreCliente.getText().length() > 30) {
             valido = false;
         }
+        // Si el carácter no es válido, se bloquea su ingreso.
         if (!valido) {
             evt.consume();
         }
     }//GEN-LAST:event_txtNombreClienteKeyTyped
 
     private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
+        // Valida visualmente el formato del correo cuando el usuario sale del campo.
         String correo = txtCorreo.getText().trim();
+
         if (correo.isEmpty()) {
+            // Si está vacío, se restaura el borde normal.
             txtCorreo.setBorder(UIStyle.bordeCampo());
+
         } else if (correo.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+            // Si el formato es correcto, se aplica un borde de éxito.
             txtCorreo.setBorder(javax.swing.BorderFactory.createCompoundBorder(
                     javax.swing.BorderFactory.createLineBorder(UIStyle.EXITO_BORDE, 1, true),
                     javax.swing.BorderFactory.createEmptyBorder(6, 10, 6, 10)));
+
         } else {
+            // Si el formato no es válido, se aplica un borde de error.
             txtCorreo.setBorder(javax.swing.BorderFactory.createCompoundBorder(
                     javax.swing.BorderFactory.createLineBorder(UIStyle.ERROR_BORDE, 1, true),
                     javax.swing.BorderFactory.createEmptyBorder(6, 10, 6, 10)));
@@ -238,16 +252,22 @@ public class RegistroForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoFocusLost
 
     private void txtConfContraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtConfContraFocusLost
+        // Verifica visualmente si la confirmación coincide con la contraseña ingresada.
         String password = new String(pass.getPassword());
         String confirmPassword = txtConfContra.getText();
 
         if (confirmPassword.isEmpty()) {
+            // Si está vacío, se restaura el borde normal.
             txtConfContra.setBorder(UIStyle.bordeCampo());
+
         } else if (confirmPassword.equals(password)) {
+            // Si las contraseñas coinciden, se aplica un borde de éxito.
             txtConfContra.setBorder(javax.swing.BorderFactory.createCompoundBorder(
                     javax.swing.BorderFactory.createLineBorder(UIStyle.EXITO_BORDE, 1, true),
                     javax.swing.BorderFactory.createEmptyBorder(6, 10, 6, 10)));
+
         } else {
+            // Si las contraseñas no coinciden, se aplica un borde de error.
             txtConfContra.setBorder(javax.swing.BorderFactory.createCompoundBorder(
                     javax.swing.BorderFactory.createLineBorder(UIStyle.ERROR_BORDE, 1, true),
                     javax.swing.BorderFactory.createEmptyBorder(6, 10, 6, 10)));

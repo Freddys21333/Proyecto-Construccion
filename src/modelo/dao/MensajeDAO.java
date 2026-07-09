@@ -18,7 +18,8 @@ public class MensajeDAO {
             + "FROM mensajes m "
             + "INNER JOIN usuarios u ON m.id_usuario = u.id_usuario "
             + "INNER JOIN categorias c ON m.id_categoria = c.id_categoria ";
-
+    
+    //registra nuevo mensaje en el foro
     public boolean registrar(MensajeDTO mensaje) {
         String sql = "INSERT INTO mensajes (titulo, contenido, id_usuario, id_categoria) "
                 + "VALUES (?, ?, ?, ?)";
@@ -39,7 +40,7 @@ public class MensajeDAO {
             return false;
         }
     }
-
+    //lista todos los mensajes publicados en el foro
     public List<MensajeDTO> listarTodos() {
         List<MensajeDTO> mensajes = new ArrayList<>();
         String sql = SELECT_BASE + "ORDER BY m.fecha_publicacion DESC";
@@ -58,7 +59,7 @@ public class MensajeDAO {
 
         return mensajes;
     }
-
+    //Lista los mensajes que pertenecen a una categoria especifica
     public List<MensajeDTO> listarPorCategoria(int idCategoria) {
         List<MensajeDTO> mensajes = new ArrayList<>();
         String sql = SELECT_BASE + "WHERE m.id_categoria = ? ORDER BY m.fecha_publicacion DESC";
@@ -80,7 +81,7 @@ public class MensajeDAO {
 
         return mensajes;
     }
-
+    //lista los mensajes publicados por un usuario especifico
     public List<MensajeDTO> listarPorUsuario(int idUsuario) {
         List<MensajeDTO> mensajes = new ArrayList<>();
         String sql = SELECT_BASE + "WHERE m.id_usuario = ? ORDER BY m.fecha_publicacion DESC";
@@ -102,7 +103,7 @@ public class MensajeDAO {
 
         return mensajes;
     }
-
+    //Elimina un mensaje del foro segun su identificador
     public boolean eliminar(int idMensaje) {
         String sql = "DELETE FROM mensajes WHERE id_mensaje = ?";
 
@@ -119,7 +120,7 @@ public class MensajeDAO {
             return false;
         }
     }
-
+    //convierte un registro de la base, en un objeto de mensaje dto
     private MensajeDTO mapearMensaje(ResultSet rs) throws SQLException {
         MensajeDTO mensaje = new MensajeDTO();
 

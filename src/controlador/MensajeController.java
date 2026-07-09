@@ -12,7 +12,7 @@ public class MensajeController {
     public MensajeController() {
         this.mensajeDAO = new MensajeDAO();
     }
-
+     // Valida y publica un nuevo mensaje o problema técnico en el foro.
     public String publicarMensaje(String titulo, String contenido, int idCategoria) {
 
         if (SesionUsuario.usuarioActual == null) {
@@ -46,22 +46,23 @@ public class MensajeController {
             return "No se pudo publicar el mensaje.";
         }
     }
-
+    // Obtiene todos los mensajes publicados en el foro.
     public List<MensajeDTO> listarMensajes() {
         return mensajeDAO.listarTodos();
     }
-
+    // Obtiene los mensajes filtrados por categoría.
+    // Si no se selecciona una categoría válida, muestra todos los mensajes.
     public List<MensajeDTO> listarMensajesPorCategoria(int idCategoria) {
         if (idCategoria <= 0) {
             return mensajeDAO.listarTodos();
         }
         return mensajeDAO.listarPorCategoria(idCategoria);
     }
-
+    // Obtiene los mensajes publicados por un usuario específico.
     public List<MensajeDTO> listarMensajesPorUsuario(int idUsuario) {
         return mensajeDAO.listarPorUsuario(idUsuario);
     }
-
+    // Elimina un mensaje del foro mediante su identificador.
     public String eliminarMensaje(int idMensaje) {
         boolean eliminado = mensajeDAO.eliminar(idMensaje);
 

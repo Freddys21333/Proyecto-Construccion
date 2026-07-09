@@ -10,7 +10,7 @@ import java.util.List;
 import modelo.dto.CategoriaDTO;
 
 public class CategoriaDAO {
-
+    // Registra una nueva categoría en la base de datos.
     public boolean registrar(CategoriaDTO categoria) {
         String sql = "INSERT INTO categorias (nombre_categoria) VALUES (?)";
 
@@ -27,7 +27,7 @@ public class CategoriaDAO {
             return false;
         }
     }
-
+    // Lista todas las categorías disponibles para clasificar los mensajes del foro.
     public List<CategoriaDTO> listarTodas() {
         List<CategoriaDTO> categorias = new ArrayList<>();
         String sql = "SELECT * FROM categorias ORDER BY nombre_categoria";
@@ -51,7 +51,7 @@ public class CategoriaDAO {
 
         return categorias;
     }
-
+    // Busca una categoría específica mediante su identificador.
     public CategoriaDTO buscarPorId(int idCategoria) {
         String sql = "SELECT * FROM categorias WHERE id_categoria = ?";
 

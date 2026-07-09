@@ -142,31 +142,36 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-
+        // Abre la ventana de registro para crear una nueva cuenta.
         RegistroForm Registro = new RegistroForm();
         Registro.setVisible(true);
         Registro.pack();
         Registro.setLocationRelativeTo(null);
+        // Cierra la ventana actual de inicio de sesión
         this.dispose();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
-         UsuarioController controller = new UsuarioController();
+        // Se crea el controlador encargado de validar el inicio de sesión.
+        UsuarioController controller = new UsuarioController();
 
+        // Se envían el correo y la contraseña ingresados por el usuario.
         String resultado = controller.iniciarSesion(
             txtEmail.getText(),
             new String(txtContrasena.getPassword())
         );
-
+        // Si las credenciales son correctas, se abre el menú principal.
         if (resultado.equals("OK")) {
             JOptionPane.showMessageDialog(this, "Bienvenido " + SesionUsuario.usuarioActual.getNombre());
 
             MenuPrincipalForm menu = new MenuPrincipalForm();
             menu.setVisible(true);
             menu.setLocationRelativeTo(null);
+            // Cierra la ventana de login.
             this.dispose();
 
         } else {
+            // Muestra el mensaje de error correspondiente.
             JOptionPane.showMessageDialog(this, resultado, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_LoginBtnActionPerformed

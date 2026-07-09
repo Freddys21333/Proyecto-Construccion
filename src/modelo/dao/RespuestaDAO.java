@@ -10,7 +10,7 @@ import java.util.List;
 import modelo.dto.RespuestaDTO;
 
 public class RespuestaDAO {
-
+    // Registra una nueva respuesta asociada a un mensaje del foro.
     public boolean registrar(RespuestaDTO respuesta) {
         String sql = "INSERT INTO respuestas (id_mensaje, id_usuario, contenido) VALUES (?, ?, ?)";
 
@@ -29,7 +29,7 @@ public class RespuestaDAO {
             return false;
         }
     }
-
+    // Lista todas las respuestas pertenecientes a un mensaje específico.
     public List<RespuestaDTO> listarPorMensaje(int idMensaje) {
         List<RespuestaDTO> respuestas = new ArrayList<>();
         String sql = "SELECT r.*, u.nombre AS nombre_usuario "
@@ -64,7 +64,7 @@ public class RespuestaDAO {
 
         return respuestas;
     }
-
+    // Cuenta cuántas respuestas tiene un mensaje del foro.
     public int contarPorMensaje(int idMensaje) {
         String sql = "SELECT COUNT(*) AS total FROM respuestas WHERE id_mensaje = ?";
 

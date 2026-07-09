@@ -9,7 +9,8 @@ import modelo.dto.UsuarioDTO;
 import util.HashUtil;
 
 public class UsuarioDAO {
-
+    //Registra un nuevo usuario en la base de datos.
+    //Utiliza PreparedStatement para evitar inyección SQL.
     public boolean registrar(UsuarioDTO usuario) {
         String sql = "INSERT INTO usuarios (nombre, correo, password) VALUES (?, ?, ?)";
 
@@ -30,13 +31,13 @@ public class UsuarioDAO {
             return false;
         }
     }
-
+    // Valida el inicio de sesión del usuario mediante correo y contraseña.
     public UsuarioDTO iniciarSesion(String correo, String password) {
         String sql = "SELECT * FROM usuarios WHERE correo = ? AND password = ?";
 
         try (Connection con = Conexion.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
-
+            //Se aplica el mismo hash a la contraseña ingresada para compararla con la guardada.
             String passwordHash = HashUtil.sha256(password);
 
             ps.setString(1, correo);
@@ -62,7 +63,7 @@ public class UsuarioDAO {
 
         return null;
     }
-
+    // Verifica si un correo ya se encuentra registrado en la base de datos.
     public boolean existeCorreo(String correo) {
         String sql = "SELECT id_usuario FROM usuarios WHERE correo = ?";
 
@@ -79,7 +80,7 @@ public class UsuarioDAO {
             return false;
         }
     }
-
+    // Busca un usuario específico mediante su identificador.
     public UsuarioDTO buscarPorId(int idUsuario) {
         String sql = "SELECT * FROM usuarios WHERE id_usuario = ?";
 

@@ -4,12 +4,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+//Clase encargada de establecer la conexión entre la aplicación Java
+// y la base de datos MySQL del sistema Soporte Técnico Estudiantil.
+ 
 public class Conexion {
 
     private static final String URL = "jdbc:mysql://localhost:3306/soporte_estudiantil";
     private static final String USUARIO = "root";
     private static final String PASSWORD = "";
-
+    
+    // Método que retorna una conexión activa con la base de datos.
     public static Connection getConexion() {
         Connection conexion = null;
 
@@ -24,17 +28,7 @@ public class Conexion {
             System.out.println("Error al conectar con la base de datos.");
             System.out.println(e.getMessage());
         }
-
+        //return objeto Connection si la conexión es exitosa, o null si ocurre un error.
         return conexion;
-    }
-    
-    public static void main(String[] args) {
-        Connection con = Conexion.getConexion();
-
-        if (con != null) {
-            System.out.println("La conexión funciona correctamente.");
-        } else {
-            System.out.println("No se pudo conectar.");
-        }
     }
 }

@@ -11,7 +11,8 @@ public class UsuarioController {
     public UsuarioController() {
         this.usuarioDAO = new UsuarioDAO();
     }
-
+    //Valida los datos ingresados en el formulario de registro
+    //y solicita al DAO guardar el usuario en la base de datos.
     public String registrarUsuario(String nombre, String correo, String password, String confirmarPassword) {
 
         if (nombre == null || nombre.trim().isEmpty()) {
