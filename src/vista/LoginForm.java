@@ -43,14 +43,14 @@ public class LoginForm extends javax.swing.JFrame {
         lblLavanderia.setFont(new java.awt.Font("Showcard Gothic", 1, 24)); // NOI18N
         lblLavanderia.setForeground(new java.awt.Color(255, 255, 255));
         lblLavanderia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLavanderia.setText("Lavanderia virtual");
+        lblLavanderia.setText("Foro soporte tecnico");
 
         javax.swing.GroupLayout RightLayout = new javax.swing.GroupLayout(Right);
         Right.setLayout(RightLayout);
         RightLayout.setHorizontalGroup(
             RightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightLayout.createSequentialGroup()
-                .addContainerGap(532, Short.MAX_VALUE)
+                .addContainerGap(503, Short.MAX_VALUE)
                 .addComponent(lblLavanderia)
                 .addContainerGap())
         );
