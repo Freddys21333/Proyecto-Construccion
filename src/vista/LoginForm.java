@@ -2,14 +2,15 @@ package vista;
 
 import controlador.UsuarioController;
 import util.SesionUsuario;
+import util.UIStyle;
+import util.RoundedButton;
 import javax.swing.JOptionPane;
-
 
 public class LoginForm extends javax.swing.JFrame {
 
     public LoginForm() {
         initComponents();
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -20,140 +21,107 @@ public class LoginForm extends javax.swing.JFrame {
         Right = new javax.swing.JPanel();
         lblLavanderia = new javax.swing.JLabel();
         Left = new javax.swing.JPanel();
+        javax.swing.JPanel pnlCard = new javax.swing.JPanel();
         lblInicioSesion = new javax.swing.JLabel();
+        javax.swing.JLabel lblSubtitulo = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         lblContrasena = new javax.swing.JLabel();
         txtContrasena = new javax.swing.JPasswordField();
-        LoginBtn = new javax.swing.JButton();
+        LoginBtn = new RoundedButton();
         lblRegistrar = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("INICIAR SESION");
+        setTitle("Iniciar sesion");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.setBackground(UIStyle.FONDO);
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 540));
         jPanel1.setLayout(null);
 
-        Right.setBackground(new java.awt.Color(0, 102, 102));
-        Right.setPreferredSize(new java.awt.Dimension(400, 500));
+        Right.setBackground(UIStyle.PRIMARIO);
+        Right.setLayout(null);
 
-        lblLavanderia.setFont(new java.awt.Font("Showcard Gothic", 1, 24)); // NOI18N
-        lblLavanderia.setForeground(new java.awt.Color(255, 255, 255));
-        lblLavanderia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLavanderia.setText("Foro soporte tecnico");
-
-        javax.swing.GroupLayout RightLayout = new javax.swing.GroupLayout(Right);
-        Right.setLayout(RightLayout);
-        RightLayout.setHorizontalGroup(
-            RightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightLayout.createSequentialGroup()
-                .addContainerGap(503, Short.MAX_VALUE)
-                .addComponent(lblLavanderia)
-                .addContainerGap())
-        );
-        RightLayout.setVerticalGroup(
-            RightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(lblLavanderia)
-                .addContainerGap())
-        );
+        lblLavanderia.setFont(UIStyle.FUENTE_SUBTITULO_HEADER);
+        lblLavanderia.setForeground(java.awt.Color.WHITE);
+        lblLavanderia.setText("Foro de Soporte Tecnico Estudiantil");
+        Right.add(lblLavanderia);
+        lblLavanderia.setBounds(30, 0, 460, 64);
 
         jPanel1.add(Right);
-        Right.setBounds(0, 0, 800, 60);
+        Right.setBounds(0, 0, 800, 64);
 
-        Left.setBackground(new java.awt.Color(255, 255, 255));
-        Left.setMinimumSize(new java.awt.Dimension(400, 500));
+        Left.setBackground(UIStyle.FONDO);
+        Left.setLayout(null);
 
-        lblInicioSesion.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        lblInicioSesion.setForeground(new java.awt.Color(0, 102, 102));
+        pnlCard.setBackground(UIStyle.TARJETA);
+        pnlCard.setBorder(javax.swing.BorderFactory.createLineBorder(UIStyle.BORDE, 1, true));
+        pnlCard.setLayout(null);
+
+        lblInicioSesion.setFont(UIStyle.FUENTE_TITULO);
+        lblInicioSesion.setForeground(UIStyle.TEXTO);
         lblInicioSesion.setText("Iniciar sesion");
+        pnlCard.add(lblInicioSesion);
+        lblInicioSesion.setBounds(40, 28, 340, 36);
 
-        lblEmail.setBackground(new java.awt.Color(102, 102, 102));
-        lblEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSubtitulo.setFont(UIStyle.FUENTE_TEXTO);
+        lblSubtitulo.setForeground(UIStyle.TEXTO_SUAVE);
+        lblSubtitulo.setText("Ingresa tus datos para continuar");
+        pnlCard.add(lblSubtitulo);
+        lblSubtitulo.setBounds(40, 64, 340, 20);
+
         lblEmail.setText("Email");
+        UIStyle.etiquetaCampo(lblEmail);
+        pnlCard.add(lblEmail);
+        lblEmail.setBounds(40, 104, 340, 18);
 
-        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(102, 102, 102));
+        UIStyle.estiloCampo(txtEmail);
+        pnlCard.add(txtEmail);
+        txtEmail.setBounds(40, 124, 340, 40);
 
-        lblContrasena.setBackground(new java.awt.Color(102, 102, 102));
-        lblContrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblContrasena.setText("Contraseña");
+        lblContrasena.setText("Contrasena");
+        UIStyle.etiquetaCampo(lblContrasena);
+        pnlCard.add(lblContrasena);
+        lblContrasena.setBounds(40, 180, 340, 18);
 
-        LoginBtn.setBackground(new java.awt.Color(0, 102, 102));
-        LoginBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LoginBtn.setForeground(new java.awt.Color(255, 255, 255));
+        txtContrasena.setEchoChar('•');
+        UIStyle.estiloCampo(txtContrasena);
+        pnlCard.add(txtContrasena);
+        txtContrasena.setBounds(40, 200, 340, 40);
+
         LoginBtn.setText("Iniciar sesion");
+        UIStyle.botonPrimario((RoundedButton) LoginBtn);
         LoginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginBtnActionPerformed(evt);
             }
         });
+        pnlCard.add(LoginBtn);
+        LoginBtn.setBounds(40, 260, 340, 44);
 
-        lblRegistrar.setText("¿No tienes cuenta?");
+        lblRegistrar.setFont(UIStyle.FUENTE_TEXTO);
+        lblRegistrar.setForeground(UIStyle.TEXTO_SUAVE);
+        lblRegistrar.setText("No tienes cuenta?");
+        lblRegistrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnlCard.add(lblRegistrar);
+        lblRegistrar.setBounds(40, 322, 160, 24);
 
-        btnRegistrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnRegistrar.setForeground(new java.awt.Color(0, 204, 204));
-        btnRegistrar.setText("Registrar");
+        UIStyle.botonTexto(btnRegistrar, UIStyle.PRIMARIO);
+        btnRegistrar.setText("Registrarme");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
+        pnlCard.add(btnRegistrar);
+        btnRegistrar.setBounds(200, 322, 180, 24);
 
-        javax.swing.GroupLayout LeftLayout = new javax.swing.GroupLayout(Left);
-        Left.setLayout(LeftLayout);
-        LeftLayout.setHorizontalGroup(
-            LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LeftLayout.createSequentialGroup()
-                .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LeftLayout.createSequentialGroup()
-                        .addGap(333, 333, 333)
-                        .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(LeftLayout.createSequentialGroup()
-                        .addGap(286, 286, 286)
-                        .addComponent(lblInicioSesion))
-                    .addGroup(LeftLayout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblEmail)
-                            .addComponent(txtEmail)
-                            .addComponent(lblContrasena)
-                            .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(LeftLayout.createSequentialGroup()
-                        .addGap(293, 293, 293)
-                        .addComponent(lblRegistrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRegistrar)))
-                .addContainerGap(239, Short.MAX_VALUE))
-        );
-        LeftLayout.setVerticalGroup(
-            LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LeftLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(lblInicioSesion)
-                .addGap(18, 18, 18)
-                .addComponent(lblEmail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblContrasena)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRegistrar)
-                    .addComponent(btnRegistrar))
-                .addContainerGap(101, Short.MAX_VALUE))
-        );
+        Left.add(pnlCard);
+        pnlCard.setBounds(190, 40, 420, 390);
 
         jPanel1.add(Left);
-        Left.setBounds(0, 60, 800, 440);
+        Left.setBounds(0, 64, 800, 476);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

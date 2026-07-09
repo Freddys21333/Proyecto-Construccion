@@ -3,6 +3,8 @@ package vista;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import controlador.UsuarioController;
+import util.UIStyle;
+import util.RoundedButton;
 
 public class RegistroForm extends javax.swing.JFrame {
 
@@ -19,189 +21,144 @@ public class RegistroForm extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lblLavanderia = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        javax.swing.JPanel pnlCard = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        javax.swing.JLabel lblSubtitulo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtNombreCliente = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         pass = new javax.swing.JPasswordField();
-        jLabel8 = new javax.swing.JLabel();
-        SignUpBtn = new javax.swing.JButton();
-        btnInicioSesion = new javax.swing.JButton();
-        txtConfContra = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        txtConfContra = new javax.swing.JTextField();
+        SignUpBtn = new RoundedButton();
+        jLabel8 = new javax.swing.JLabel();
+        btnInicioSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("REGISTRO");
+        setTitle("Registro");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.setBackground(UIStyle.FONDO);
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 620));
         jPanel1.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel2.setBackground(UIStyle.PRIMARIO);
+        jPanel2.setLayout(null);
 
-        lblLavanderia.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        lblLavanderia.setForeground(new java.awt.Color(255, 255, 255));
-        lblLavanderia.setText("FORO SOPORTE TECNICO");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(517, Short.MAX_VALUE)
-                .addComponent(lblLavanderia)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(lblLavanderia)
-                .addContainerGap())
-        );
+        lblLavanderia.setFont(UIStyle.FUENTE_SUBTITULO_HEADER);
+        lblLavanderia.setForeground(Color.WHITE);
+        lblLavanderia.setText("Foro de Soporte Tecnico Estudiantil");
+        jPanel2.add(lblLavanderia);
+        lblLavanderia.setBounds(30, 0, 460, 64);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 800, 50);
+        jPanel2.setBounds(0, 0, 800, 64);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(UIStyle.FONDO);
+        jPanel3.setLayout(null);
 
-        jLabel4.setBackground(new java.awt.Color(0, 102, 102));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel4.setText("Registro");
+        pnlCard.setBackground(UIStyle.TARJETA);
+        pnlCard.setBorder(javax.swing.BorderFactory.createLineBorder(UIStyle.BORDE, 1, true));
+        pnlCard.setLayout(null);
 
-        jLabel5.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(UIStyle.FUENTE_TITULO);
+        jLabel4.setForeground(UIStyle.TEXTO);
+        jLabel4.setText("Crear cuenta");
+        pnlCard.add(jLabel4);
+        jLabel4.setBounds(40, 28, 440, 36);
+
+        lblSubtitulo.setFont(UIStyle.FUENTE_TEXTO);
+        lblSubtitulo.setForeground(UIStyle.TEXTO_SUAVE);
+        lblSubtitulo.setText("Completa tus datos para unirte al foro");
+        pnlCard.add(lblSubtitulo);
+        lblSubtitulo.setBounds(40, 64, 440, 20);
+
         jLabel5.setText("Nombre y Apellidos");
+        UIStyle.etiquetaCampo(jLabel5);
+        pnlCard.add(jLabel5);
+        jLabel5.setBounds(40, 104, 440, 18);
 
-        txtNombreCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtNombreCliente.setForeground(new java.awt.Color(102, 102, 102));
+        UIStyle.estiloCampo(txtNombreCliente);
         txtNombreCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreClienteKeyTyped(evt);
             }
         });
+        pnlCard.add(txtNombreCliente);
+        txtNombreCliente.setBounds(40, 124, 440, 40);
 
-        jLabel6.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Email");
+        UIStyle.etiquetaCampo(jLabel6);
+        pnlCard.add(jLabel6);
+        jLabel6.setBounds(40, 180, 440, 18);
 
-        txtCorreo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCorreo.setForeground(new java.awt.Color(102, 102, 102));
+        UIStyle.estiloCampo(txtCorreo);
         txtCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCorreoFocusLost(evt);
             }
         });
+        pnlCard.add(txtCorreo);
+        txtCorreo.setBounds(40, 200, 440, 40);
 
-        jLabel7.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Contraseña");
+        jLabel7.setText("Contrasena");
+        UIStyle.etiquetaCampo(jLabel7);
+        pnlCard.add(jLabel7);
+        jLabel7.setBounds(40, 256, 210, 18);
 
-        pass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        pass.setForeground(new java.awt.Color(102, 102, 102));
-        pass.setEchoChar((char) 0);
+        pass.setEchoChar('•');
+        UIStyle.estiloCampo(pass);
+        pnlCard.add(pass);
+        pass.setBounds(40, 276, 210, 40);
 
-        jLabel8.setText("¿ya tienes cuenta?");
+        jLabel10.setText("Confirmar contrasena");
+        UIStyle.etiquetaCampo(jLabel10);
+        pnlCard.add(jLabel10);
+        jLabel10.setBounds(270, 256, 210, 18);
 
-        SignUpBtn.setBackground(new java.awt.Color(0, 102, 102));
-        SignUpBtn.setForeground(new java.awt.Color(255, 255, 255));
+        UIStyle.estiloCampo(txtConfContra);
+        txtConfContra.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtConfContraFocusLost(evt);
+            }
+        });
+        pnlCard.add(txtConfContra);
+        txtConfContra.setBounds(270, 276, 210, 40);
+
         SignUpBtn.setText("Registrar");
+        UIStyle.botonPrimario((RoundedButton) SignUpBtn);
         SignUpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SignUpBtnActionPerformed(evt);
             }
         });
+        pnlCard.add(SignUpBtn);
+        SignUpBtn.setBounds(40, 336, 440, 44);
 
-        btnInicioSesion.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel8.setFont(UIStyle.FUENTE_TEXTO);
+        jLabel8.setForeground(UIStyle.TEXTO_SUAVE);
+        jLabel8.setText("Ya tienes cuenta?");
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnlCard.add(jLabel8);
+        jLabel8.setBounds(40, 398, 200, 24);
+
+        UIStyle.botonTexto(btnInicioSesion, UIStyle.PRIMARIO);
         btnInicioSesion.setText("Iniciar sesion");
         btnInicioSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioSesionActionPerformed(evt);
             }
         });
+        pnlCard.add(btnInicioSesion);
+        btnInicioSesion.setBounds(280, 398, 200, 24);
 
-        txtConfContra.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtConfContraFocusLost(evt);
-            }
-        });
-
-        jLabel10.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("Confirmar contraseña");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(347, 347, 347)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(67, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnInicioSesion))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(60, 60, 60)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtConfContra, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10))))))
-                .addContainerGap(61, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(352, 352, 352)
-                .addComponent(SignUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtConfContra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(71, 71, 71)
-                .addComponent(SignUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(btnInicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel3.add(pnlCard);
+        pnlCard.setBounds(180, 40, 520, 460);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(0, 40, 800, 460);
+        jPanel3.setBounds(0, 64, 800, 556);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,10 +224,16 @@ public class RegistroForm extends javax.swing.JFrame {
 
     private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
         String correo = txtCorreo.getText().trim();
-        if (correo.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
-            txtCorreo.setBackground(Color.GREEN); // válido
+        if (correo.isEmpty()) {
+            txtCorreo.setBorder(UIStyle.bordeCampo());
+        } else if (correo.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+            txtCorreo.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+                    javax.swing.BorderFactory.createLineBorder(UIStyle.EXITO_BORDE, 1, true),
+                    javax.swing.BorderFactory.createEmptyBorder(6, 10, 6, 10)));
         } else {
-            txtCorreo.setBackground(Color.PINK); // no válido
+            txtCorreo.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+                    javax.swing.BorderFactory.createLineBorder(UIStyle.ERROR_BORDE, 1, true),
+                    javax.swing.BorderFactory.createEmptyBorder(6, 10, 6, 10)));
         }
     }//GEN-LAST:event_txtCorreoFocusLost
 
@@ -278,10 +241,16 @@ public class RegistroForm extends javax.swing.JFrame {
         String password = new String(pass.getPassword());
         String confirmPassword = txtConfContra.getText();
 
-        if (confirmPassword.equals(password)) {
-            txtConfContra.setBackground(Color.GREEN);;
+        if (confirmPassword.isEmpty()) {
+            txtConfContra.setBorder(UIStyle.bordeCampo());
+        } else if (confirmPassword.equals(password)) {
+            txtConfContra.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+                    javax.swing.BorderFactory.createLineBorder(UIStyle.EXITO_BORDE, 1, true),
+                    javax.swing.BorderFactory.createEmptyBorder(6, 10, 6, 10)));
         } else {
-            txtConfContra.setBackground(Color.PINK);;
+            txtConfContra.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+                    javax.swing.BorderFactory.createLineBorder(UIStyle.ERROR_BORDE, 1, true),
+                    javax.swing.BorderFactory.createEmptyBorder(6, 10, 6, 10)));
         }
     }//GEN-LAST:event_txtConfContraFocusLost
 
